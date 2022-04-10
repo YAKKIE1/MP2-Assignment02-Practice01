@@ -35,6 +35,7 @@ fun Welcome(){
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         WelcomeText()
+        Spacer(modifier = Modifier.height(40.dp))
         ButtonInfo()
     }
 
