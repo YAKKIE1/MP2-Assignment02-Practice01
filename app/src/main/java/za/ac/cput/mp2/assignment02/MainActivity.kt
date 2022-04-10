@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import za.ac.cput.mp2.assignment02.ui.theme.MPIIAssignment02Practical01Theme
+import za.ac.cput.mp2.assignment02.ui.theme.darkBlue
 import za.ac.cput.mp2.assignment02.ui.theme.darkGray
+import za.ac.cput.mp2.assignment02.ui.theme.pastelBlue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = darkGray
+                    color = pastelBlue
                 ) {
                     Welcome()
                 }

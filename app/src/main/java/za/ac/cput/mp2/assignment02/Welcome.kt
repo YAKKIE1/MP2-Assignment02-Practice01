@@ -20,14 +20,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import za.ac.cput.mp2.assignment02.ui.theme.coolBlue
-import za.ac.cput.mp2.assignment02.ui.theme.darkGray
-import za.ac.cput.mp2.assignment02.ui.theme.lightBlue
-import za.ac.cput.mp2.assignment02.ui.theme.white
+import za.ac.cput.mp2.assignment02.ui.theme.*
 
 @Composable
 fun Welcome(){
@@ -47,16 +45,19 @@ private fun WelcomeText() {
     Text(
         text = "Welcome to My Jetpack Compose Journey",
         modifier = Modifier.padding(10.dp),
-        color = white,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp,
+        color = blueVariant,
+        textAlign = TextAlign.Center
     )
 }
 
 @Composable
 private fun ButtonInfo() {
-    var showDialog by remember { mutableStateOf(false)}
+    var showDialog by remember { mutableStateOf(false) }
 
     Button(
-        onClick = {showDialog = true},
+        onClick = { showDialog = true },
         shape = RoundedCornerShape(50),
         modifier = Modifier
             .fillMaxWidth(0.47f),
@@ -97,29 +98,46 @@ private fun ButtonInfo() {
                 )
             }
         }
+        AlertMessage(state = showDialog, onDismissRequest = { showDialog = !it })
     }
-    AlertMessage(state = showDialog, onDismissRequest = {showDialog = !it})
 }
 
 @Composable
-fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit){
+fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
 
     val context = LocalContext.current
-    
-    if (state){
+
+    if (state) {    //if state is true, display the alert dialog
         AlertDialog(
-            onDismissRequest = {onDismissRequest(state)},
-            title = { Text(text = "Welcome", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 18.sp)},
-            text = { Text(text = stringResource(id = za.ac.cput.mp2.assignment02.R.string.welcomeJetpack), color = Color.Black)},
+            onDismissRequest = { onDismissRequest(state) },
+            title = {
+                Text(
+                    text = "Welcome",
+                    color = blueVariant,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
+            },
+            text = {
+                Text(
+                    text = stringResource(
+                        id = za.ac.cput.mp2.assignment02.R.string.welcomeJetpack
+                    ),
+                    color = blueVariant,
+                    fontSize = 16.sp
+                )
+            },
+            backgroundColor = pastelBlue,
 
             confirmButton = {
-                Button(onClick = {
-                    onDismissRequest(state)
-                    Toast.makeText(context, "Click confirmed", Toast.LENGTH_SHORT).show()
-                },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = coolBlue
-                )
+                Button(
+                    onClick = {
+                        onDismissRequest(state)
+                        Toast.makeText(context, "Click confirmed", Toast.LENGTH_SHORT).show()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = coolBlue
+                    )
                 ) {
                     Text(text = "Confirm", color = white)
                 }
