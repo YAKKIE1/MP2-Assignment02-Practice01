@@ -95,7 +95,9 @@ private fun ButtonInfo() {
                 Text(
                     text = "View Info",
                     modifier = Modifier.padding(10.dp, 0.dp, 0.dp, 0.dp),
-                    color = white
+                    color = white,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.W500
                 )
             }
         }
