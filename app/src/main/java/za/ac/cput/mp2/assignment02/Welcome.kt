@@ -125,7 +125,8 @@ fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
                         id = za.ac.cput.mp2.assignment02.R.string.welcomeJetpack
                     ),
                     color = blueVariant,
-                    fontSize = 16.sp
+                    fontSize = 17.sp,
+                    lineHeight = 30.sp
                 )
             },
             backgroundColor = pastelBlue,

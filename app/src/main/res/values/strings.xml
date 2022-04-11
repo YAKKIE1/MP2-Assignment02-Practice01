@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MPII - Assignment 02 - Practical 01</string>
 
-    <string name="welcomeJetpack">This Project will be my Progression and Journey on all the things I learnt in Jetpack Compose</string>
+    <string name="welcomeJetpack">This Project will be my Progression and Journey on all the things I learnt in Jetpack Compose.
+        I am still familiarizing myself with the code format to make my code as readable as possible.</string>
 
 </resources>
