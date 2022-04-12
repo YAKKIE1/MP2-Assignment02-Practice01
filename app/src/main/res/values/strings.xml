@@ -2,6 +2,6 @@
     <string name="app_name">MPII - Assignment 02 - Practical 01</string>
 
     <string name="welcomeJetpack">This Project will be my Progression and Journey on all the things I learnt in Jetpack Compose.
-        I am still familiarizing myself with the code format to make my code as readable as possible.</string>
+        The thing I like about Jetpack Compose is that creating a list is simplified greatly and easier to understand. Most of the gui components becomes easier to understand once you practice.</string>
 
 </resources>

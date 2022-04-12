@@ -1,6 +1,6 @@
 package za.ac.cput.mp2.assignment02
 
-import android.R
+
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import za.ac.cput.mp2.assignment02.ui.theme.*
+
 
 @Composable
 fun Welcome(){
@@ -124,7 +125,7 @@ fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
             text = {
                 Text(
                     text = stringResource(
-                        id = za.ac.cput.mp2.assignment02.R.string.welcomeJetpack
+                        id = R.string.welcomeJetpack
                     ),
                     color = blueVariant,
                     fontSize = 17.sp,
