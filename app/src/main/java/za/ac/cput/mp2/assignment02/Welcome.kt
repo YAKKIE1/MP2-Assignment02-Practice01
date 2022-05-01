@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,18 +19,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import za.ac.cput.mp2.assignment02.ui.theme.*
 
 
 @Composable
-fun Welcome(){
+fun WelcomeScreen(navController: NavController){
     Column(
         Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -38,6 +39,8 @@ fun Welcome(){
         WelcomeText()
         Spacer(modifier = Modifier.height(40.dp))
         ButtonInfo()
+        Spacer(modifier = Modifier.height(40.dp))
+        ButtonJourney(navController)
     }
 
 }
@@ -107,9 +110,60 @@ private fun ButtonInfo() {
 }
 
 @Composable
+fun ButtonJourney(navController: NavController) {
+    Button(
+        onClick = {
+            navController.navigate("About Screen")
+        },
+        shape = RoundedCornerShape(50),
+        modifier = Modifier
+            .fillMaxWidth(0.5f),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.Transparent
+        ),
+        contentPadding = PaddingValues() //removes padding between button and box
+    ) {
+        Box(
+            modifier = Modifier
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            coolBlue,
+                            lightBlue
+                        )
+                    )
+                )
+                .padding(16.dp, 8.dp)
+                .clip(shape = RoundedCornerShape(12.dp))
+                .fillMaxWidth(1f),
+            contentAlignment = Alignment.Center,
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Image(
+                    imageVector = Icons.Filled.Star,
+                    contentDescription = "Navigate to next Screen",
+                    colorFilter = ColorFilter.tint(white)
+                )
+                Text(
+                    text = "Begin Journey",
+                    modifier = Modifier.padding(10.dp, 0.dp, 0.dp, 0.dp),
+                    color = white,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.W500
+                )
+            }
+        }
+    }
+}
+
+@Composable
 fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
 
-    val context = LocalContext.current
+    val context = LocalContext.current //Display the toast message
 
     if (state) {    //if state is true, display the alert dialog
         AlertDialog(
@@ -154,5 +208,5 @@ fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
 @Preview
 @Composable
 fun Preview(){
-    WelcomeText()
+    WelcomeScreen(rememberNavController())
 }
