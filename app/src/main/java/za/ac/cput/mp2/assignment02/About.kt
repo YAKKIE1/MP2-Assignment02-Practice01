@@ -4,9 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -21,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.rememberNavController
 import za.ac.cput.mp2.assignment02.ui.theme.blueVariant
 import za.ac.cput.mp2.assignment02.ui.theme.coolBlue
@@ -29,6 +28,8 @@ import za.ac.cput.mp2.assignment02.ui.theme.white
 
 @Composable
 fun AboutMeScreen(navController: NavController) {
+    val scaffoldState: ScaffoldState = rememberScaffoldState()
+
     Column(
         Modifier
             .fillMaxWidth()
@@ -36,11 +37,29 @@ fun AboutMeScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
 
-    ) {
-        TextDetails()
-        Spacer(modifier = Modifier.height(40.dp))
-        ButtonViewModules()
+        ){
+        Scaffold(
+            scaffoldState = scaffoldState,
+            topBar = { ScaffoldTopAppBar(navController)}
+        ){
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+                    .fillMaxHeight(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+
+                ) {
+                TextDetails()
+                Spacer(modifier = Modifier.height(40.dp))
+                ButtonViewModules()
+            }
+        }
     }
+
+
+
 }
 
 @Composable
@@ -165,6 +184,31 @@ fun ButtonViewModules() {
             }
         }
     }
+}
+
+@Composable
+fun ScaffoldTopAppBar(navController: NavController) {
+    TopAppBar(
+        navigationIcon = {
+            IconButton( 
+                content = {
+                    Icon(
+                        Icons.Default.ArrowBack,
+                        tint = Color.White,
+                        contentDescription = "About Screen"
+                    )
+                },
+                onClick = {
+                    navController.navigate("Welcome Screen"){
+                        popUpTo(navController.graph.findStartDestination().id)
+                        launchSingleTop = true
+                    }
+                }
+            )
+        },
+        title = { Text(text = "About Myself", color = white)},
+        backgroundColor = coolBlue
+    )
 }
 
 @Preview

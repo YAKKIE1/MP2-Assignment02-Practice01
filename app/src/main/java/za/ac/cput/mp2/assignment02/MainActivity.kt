@@ -40,10 +40,7 @@ class MainActivity : ComponentActivity() {
 fun Navigation() {
     val navController = rememberNavController()
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+
         NavHost(navController = navController,
             startDestination = "Welcome Screen",
             builder ={
@@ -51,7 +48,7 @@ fun Navigation() {
                 composable("About Screen", content = { AboutMeScreen(navController = navController)})
             }
         )
-    }
+
 }
 
 

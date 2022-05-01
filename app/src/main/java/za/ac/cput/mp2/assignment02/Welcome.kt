@@ -32,7 +32,8 @@ import za.ac.cput.mp2.assignment02.ui.theme.*
 @Composable
 fun WelcomeScreen(navController: NavController){
     Column(
-        Modifier.fillMaxWidth(),
+        Modifier.fillMaxWidth()
+            .fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
