@@ -1,4 +1,4 @@
-package za.ac.cput.mp2.assignment02
+package za.ac.cput.mp2.assignment02.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.rememberNavController
+import za.ac.cput.mp2.assignment02.navigation.Screen
 import za.ac.cput.mp2.assignment02.ui.theme.blueVariant
 import za.ac.cput.mp2.assignment02.ui.theme.coolBlue
 import za.ac.cput.mp2.assignment02.ui.theme.lightBlue
@@ -30,17 +31,9 @@ import za.ac.cput.mp2.assignment02.ui.theme.white
 fun AboutMeScreen(navController: NavController) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-
-        ){
         Scaffold(
             scaffoldState = scaffoldState,
-            topBar = { ScaffoldTopAppBar(navController)}
+            topBar = { TopAppBarAboutScreen(navController) }
         ){
             Column(
                 Modifier
@@ -53,13 +46,9 @@ fun AboutMeScreen(navController: NavController) {
                 ) {
                 TextDetails()
                 Spacer(modifier = Modifier.height(40.dp))
-                ButtonViewModules()
+                ButtonViewModules(navController)
             }
         }
-    }
-
-
-
 }
 
 @Composable
@@ -138,9 +127,11 @@ fun TextDetails() {
 }
 
 @Composable
-fun ButtonViewModules() {
+fun ButtonViewModules(navController: NavController) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+            navController.navigate(Screen.ModuleScreen.route)
+        },
         shape = RoundedCornerShape(50),
         modifier = Modifier
             .fillMaxWidth(0.68f),
@@ -187,7 +178,7 @@ fun ButtonViewModules() {
 }
 
 @Composable
-fun ScaffoldTopAppBar(navController: NavController) {
+fun TopAppBarAboutScreen(navController: NavController) {
     TopAppBar(
         navigationIcon = {
             IconButton( 
@@ -199,7 +190,7 @@ fun ScaffoldTopAppBar(navController: NavController) {
                     )
                 },
                 onClick = {
-                    navController.navigate("Welcome Screen"){
+                    navController.navigate(Screen.WelcomeScreen.route){
                         popUpTo(navController.graph.findStartDestination().id)
                         launchSingleTop = true
                     }

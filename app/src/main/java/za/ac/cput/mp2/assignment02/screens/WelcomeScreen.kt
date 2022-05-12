@@ -1,4 +1,4 @@
-package za.ac.cput.mp2.assignment02
+package za.ac.cput.mp2.assignment02.screens
 
 
 import android.widget.Toast
@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import za.ac.cput.mp2.assignment02.R
+import za.ac.cput.mp2.assignment02.navigation.Screen
 import za.ac.cput.mp2.assignment02.ui.theme.*
 
 
@@ -114,7 +116,7 @@ private fun ButtonInfo() {
 fun ButtonJourney(navController: NavController) {
     Button(
         onClick = {
-            navController.navigate("About Screen")
+            navController.navigate(Screen.AboutScreen.route)
         },
         shape = RoundedCornerShape(50),
         modifier = Modifier
