@@ -11,8 +11,6 @@ import za.ac.cput.mp2.assignment02.screens.ModuleScreen
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-
-
     NavHost(
         navController = navController,
         startDestination = Screen.WelcomeScreen.route,

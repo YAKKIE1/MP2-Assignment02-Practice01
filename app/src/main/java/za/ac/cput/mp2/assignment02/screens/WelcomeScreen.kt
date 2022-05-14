@@ -113,7 +113,7 @@ private fun ButtonInfo() {
 }
 
 @Composable
-fun ButtonJourney(navController: NavController) {
+private fun ButtonJourney(navController: NavController) {
     Button(
         onClick = {
             navController.navigate(Screen.AboutScreen.route)
@@ -164,7 +164,7 @@ fun ButtonJourney(navController: NavController) {
 }
 
 @Composable
-fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
+private fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
 
     val context = LocalContext.current //Display the toast message
 

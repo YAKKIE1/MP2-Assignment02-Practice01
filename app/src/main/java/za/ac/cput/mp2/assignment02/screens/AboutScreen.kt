@@ -52,7 +52,7 @@ fun AboutMeScreen(navController: NavController) {
 }
 
 @Composable
-fun TextDetails() {
+private fun TextDetails() {
     Row(
         Modifier
             .fillMaxWidth()
@@ -127,7 +127,7 @@ fun TextDetails() {
 }
 
 @Composable
-fun ButtonViewModules(navController: NavController) {
+private fun ButtonViewModules(navController: NavController) {
     Button(
         onClick = {
             navController.navigate(Screen.ModuleScreen.route)
@@ -178,7 +178,7 @@ fun ButtonViewModules(navController: NavController) {
 }
 
 @Composable
-fun TopAppBarAboutScreen(navController: NavController) {
+private fun TopAppBarAboutScreen(navController: NavController) {
     TopAppBar(
         navigationIcon = {
             IconButton( 
