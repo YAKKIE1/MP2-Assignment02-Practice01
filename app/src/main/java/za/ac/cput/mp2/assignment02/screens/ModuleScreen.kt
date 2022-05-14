@@ -136,7 +136,7 @@ private fun ExitButton() {
 private fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> Unit) {
 
     val context = LocalContext.current //Display the toast message
-    val activity = (LocalContext.current as? Activity)
+    val activity = (LocalContext.current as Activity) //allows to exit the application: line 164
 
     if (state) {    //if state is true, display the alert dialog
         AlertDialog(
@@ -161,7 +161,7 @@ private fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> U
             confirmButton = {
                 Button(
                     onClick = {
-                        activity?.finish()
+                        activity.finish()
                     },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color(136, 5, 5, 255)
