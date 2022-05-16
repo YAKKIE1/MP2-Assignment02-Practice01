@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import za.ac.cput.mp2.assignment02.R
 import za.ac.cput.mp2.assignment02.navigation.Screen
 import za.ac.cput.mp2.assignment02.ui.theme.*
+import kotlin.system.exitProcess
 
 @Composable
 fun ModuleScreen(navController: NavController) {
@@ -161,7 +162,8 @@ private fun AlertMessage(state: Boolean, onDismissRequest: (state: Boolean) -> U
             confirmButton = {
                 Button(
                     onClick = {
-                        activity.finish()
+                        activity.finish() //closes activity
+                        exitProcess(0); //stops the process
                     },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color(136, 5, 5, 255)
